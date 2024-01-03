@@ -5,7 +5,7 @@ export default function Home() {
     <main className="flex w-full min-h-screen flex-col">
       Hororok
       <div>
-        <Button>Test</Button>
+        <Button>호로록</Button>
       </div>
     </main>
   );
