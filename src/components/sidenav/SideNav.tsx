@@ -2,7 +2,7 @@
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { buttonVariants } from '../ui/button';
-import { LucideIcon, Newspaper, Star } from 'lucide-react';
+import { LucideIcon, MessageCircle, Newspaper, Star } from 'lucide-react';
 import { usePathname } from 'next/navigation';
 
 const NavItems: {
@@ -11,14 +11,19 @@ const NavItems: {
   icon: LucideIcon;
 }[] = [
   {
-    title: 'NewFeeds',
+    title: '새 피드',
     href: '/',
     icon: Newspaper,
   },
   {
-    title: 'Favorite',
+    title: '좋아요',
     href: '/other',
     icon: Star,
+  },
+  {
+    title: '채팅',
+    href: '/other',
+    icon: MessageCircle,
   },
 ];
 
