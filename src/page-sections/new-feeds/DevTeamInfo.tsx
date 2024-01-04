@@ -11,7 +11,7 @@ const teamInfo = [
     imgSrc: 'https://avatars.githubusercontent.com/u/136368145?v=4',
   },
   {
-    name: '노헤지',
+    name: '노혜지',
     alt: 'HJ',
     imgSrc: 'https://avatars.githubusercontent.com/u/86008693?v=4',
   },
