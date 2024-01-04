@@ -10,7 +10,7 @@ export const AppLayout = ({ children }: Props) => {
   return (
     <div>
       <Header />
-      <div className="flex relative w-full pt-24 px-2 bg-red-200">
+      <div className="flex relative w-full pt-24 px-2 bg-background">
         <SideNav />
         <div className="px-6 w-full">{children}</div>
       </div>
