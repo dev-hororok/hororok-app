@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { formatDateKST } from '@/lib/date-format';
-import { Separator } from '@/components/ui/separator';
 import { MessageCircleWarning } from 'lucide-react';
 
 export const NoticeCard = () => {

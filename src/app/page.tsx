@@ -1,5 +1,6 @@
 import Feed from '@/models/feed.model';
 import { CreateFeed } from '@/page-sections/new-feeds/CreateFeed';
+import { DevTeamInfo } from '@/page-sections/new-feeds/DevTeamInfo';
 import { FeedList } from '@/page-sections/new-feeds/FeedList';
 import { FriendSuggestion } from '@/page-sections/new-feeds/FriendSuggestion';
 import { MyProfileCard } from '@/page-sections/new-feeds/MyProfileCard';
@@ -88,8 +89,9 @@ export default function Home() {
           <CreateFeed />
           <FeedList feeds={dummyFeedList} />
         </div>
-        <div className="w-[380px] shrink-0">
+        <div className="w-[380px] space-y-5 shrink-0">
           <NoticeCard />
+          <DevTeamInfo />
         </div>
       </div>
     </main>
