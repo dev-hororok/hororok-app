@@ -50,7 +50,7 @@ export const SideNav = () => {
                   : null
               )}
             >
-              <link.icon className="h-6 w-6" />
+              <link.icon className="h-5 w-5" />
               <span className="w-full">{link.title}</span>
             </Link>
           );

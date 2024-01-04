@@ -10,7 +10,7 @@ import {
 import Link from 'next/link';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
-export function MyProfileCard() {
+export const MyProfileCard = () => {
   return (
     <Card className="w-full">
       <CardHeader className="flex items-center">
@@ -39,8 +39,10 @@ export function MyProfileCard() {
         </ul>
       </CardContent>
       <CardFooter className="flex justify-center">
-        <Button className="">내 프로필</Button>
+        <Link href="/profile">
+          <Button className="">내 프로필</Button>
+        </Link>
       </CardFooter>
     </Card>
   );
-}
+};
