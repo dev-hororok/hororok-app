@@ -28,7 +28,7 @@ const dummyFeedList: Feed[] = [
           name: 'ggg',
           description: '없음',
         },
-        created_at: new Date(),
+        created_at: new Date('2023-12-29'),
       },
       {
         id: 'fa415dge',
@@ -39,10 +39,21 @@ const dummyFeedList: Feed[] = [
           name: 'ggg',
           description: '없음',
         },
+        created_at: new Date('2023-12-30'),
+      },
+      {
+        id: 'fadge',
+        contents: '테스트',
+        user: {
+          id: '213124',
+          email: 'test@test.com',
+          name: 'ggg',
+          description: '없음',
+        },
         created_at: new Date(),
       },
     ],
-    comments_cnt: 2,
+    comments_cnt: 3,
     likes_cnt: 4,
   },
   {
@@ -51,7 +62,7 @@ const dummyFeedList: Feed[] = [
     contents: 'contents',
     thumbnail:
       'https://images.unsplash.com/photo-1519052537078-e6302a4968d4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fGNhdHxlbnwwfHwwfHx8MA%3D%3D',
-    created_at: new Date(),
+    created_at: new Date('2023-12-26'),
     user: {
       id: '213124',
       email: 'test@test.com',

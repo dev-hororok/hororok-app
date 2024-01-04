@@ -8,6 +8,7 @@ import { Input } from '../ui/input';
 import { Button } from '../ui/button';
 import { useState } from 'react';
 import { CommentItem } from '../comment/CommentItem';
+import { formatDateKST, formatRelativeDateKST } from '@/lib/date-format';
 
 interface Props {
   feed: Feed;
@@ -32,7 +33,7 @@ export const FeedCard = ({ feed }: Props) => {
             <div className="space-y-1">
               <h4 className="font-semibold">{feed.user.name}</h4>
               <p className="text-xs text-muted-foreground">
-                {feed.created_at.toString()}
+                {formatRelativeDateKST(feed.created_at)}
               </p>
             </div>
           </div>
