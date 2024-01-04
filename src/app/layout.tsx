@@ -3,6 +3,7 @@ import { Inter as FontSans } from 'next/font/google';
 import { AppLayout } from '@/components/layouts/AppLayout';
 import '@/styles/globals.css';
 import { cn } from '@/lib/utils';
+import { ThemeProvider } from '@/providers/ThemeProvider';
 
 export const fontSans = FontSans({
   subsets: ['latin'],
@@ -27,7 +28,14 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
-        <AppLayout>{children}</AppLayout>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <AppLayout>{children}</AppLayout>
+        </ThemeProvider>
       </body>
     </html>
   );
