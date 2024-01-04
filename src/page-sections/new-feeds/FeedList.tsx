@@ -11,6 +11,10 @@ export const FeedList = ({ feeds }: Props) => {
       {feeds.map((feed) => {
         return <FeedCard key={feed.id} feed={feed} />;
       })}
+
+      <div className="py-14 text-center font-semibold text-primary text-sm">
+        😢 더이상 피드가 존재하지 않습니다.
+      </div>
     </div>
   );
 };
