@@ -3,6 +3,7 @@ import { CreateFeed } from '@/page-sections/new-feeds/CreateFeed';
 import { FeedList } from '@/page-sections/new-feeds/FeedList';
 import { FriendSuggestion } from '@/page-sections/new-feeds/FriendSuggestion';
 import { MyProfileCard } from '@/page-sections/new-feeds/MyProfileCard';
+import { NoticeCard } from '@/page-sections/new-feeds/NoticeCard';
 
 const dummyFeedList: Feed[] = [
   {
@@ -87,7 +88,9 @@ export default function Home() {
           <CreateFeed />
           <FeedList feeds={dummyFeedList} />
         </div>
-        <div className="w-[380px] shrink-0 bg-foreground/10">g</div>
+        <div className="w-[380px] shrink-0">
+          <NoticeCard />
+        </div>
       </div>
     </main>
   );

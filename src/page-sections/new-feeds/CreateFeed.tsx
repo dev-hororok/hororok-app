@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { ImageIcon, ShipIcon, TagIcon } from 'lucide-react';
+import { ImageIcon, PenSquare, ShipIcon, TagIcon } from 'lucide-react';
 import {
   Select,
   SelectContent,
@@ -17,7 +17,9 @@ export const CreateFeed = () => {
   return (
     <Card className="w-full">
       <CardHeader>
-        <CardTitle>피드 작성</CardTitle>
+        <CardTitle className="flex items-center gap-2">
+          <PenSquare className="w-5 h-5" /> 피드 작성
+        </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         <Input placeholder="제목을 작성해주세요." />
