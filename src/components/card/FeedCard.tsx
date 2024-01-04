@@ -1,16 +1,25 @@
+'use client';
 import Feed from '@/models/feed.model';
-import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
+import { Card, CardContent, CardHeader } from '../ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import Image from 'next/image';
 import { Heart, MessageCircle } from 'lucide-react';
 import { Input } from '../ui/input';
 import { Button } from '../ui/button';
+import { useState } from 'react';
+import { CommentItem } from '../comment/CommentItem';
 
 interface Props {
   feed: Feed;
 }
 
 export const FeedCard = ({ feed }: Props) => {
+  const [isComemntsVisible, setIsCommentsVisible] = useState(false);
+
+  const toggleCommentsVisible = () => {
+    setIsCommentsVisible((prev) => !prev);
+  };
+
   return (
     <Card className="w-full">
       <CardHeader>
@@ -62,11 +71,24 @@ export const FeedCard = ({ feed }: Props) => {
             <Heart className="w-4 h-4" />
             <span>좋아요</span>
           </Button>
-          <Button variant={'ghost'} className="w-full space-x-2">
+          <Button
+            type="button"
+            onClick={toggleCommentsVisible}
+            variant={'ghost'}
+            className="w-full space-x-2"
+          >
             <MessageCircle className="w-4 h-4" />
             <span>댓글</span>
           </Button>
         </div>
+        {isComemntsVisible && (
+          <div className="w-full space-y-2">
+            {feed.comments.map((comment) => {
+              return <CommentItem key={comment.id} comment={comment} />;
+            })}
+          </div>
+        )}
+
         <div className="p-6 space-y-4">
           <Input placeholder="댓글을 작성해주세요." />
           <Button className="w-full" variant={'secondary'}>

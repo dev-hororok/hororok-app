@@ -18,8 +18,32 @@ const dummyFeedList: Feed[] = [
       name: 'ggg',
       description: '없음',
     },
-    comments_cnt: 0,
-    likes_cnt: 0,
+    comments: [
+      {
+        id: 'fadge',
+        contents: '일등',
+        user: {
+          id: '213124',
+          email: 'test@test.com',
+          name: 'ggg',
+          description: '없음',
+        },
+        created_at: new Date(),
+      },
+      {
+        id: 'fa415dge',
+        contents: '안녕하세요222',
+        user: {
+          id: '213124',
+          email: 'test@test.com',
+          name: 'ggg',
+          description: '없음',
+        },
+        created_at: new Date(),
+      },
+    ],
+    comments_cnt: 2,
+    likes_cnt: 4,
   },
   {
     id: '12sf412424',
@@ -34,6 +58,7 @@ const dummyFeedList: Feed[] = [
       name: 'ggg',
       description: '없음',
     },
+    comments: [],
     comments_cnt: 0,
     likes_cnt: 0,
   },

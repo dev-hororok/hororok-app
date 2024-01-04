@@ -1,4 +1,4 @@
-import { FeedCard } from '@/components/feed-card/FeedCard';
+import { FeedCard } from '@/components/card/FeedCard';
 import Feed from '@/models/feed.model';
 
 interface Props {
