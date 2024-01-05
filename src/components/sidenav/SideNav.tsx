@@ -2,51 +2,23 @@
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { buttonVariants } from '../ui/button';
-import {
-  Bird,
-  LucideIcon,
-  MessageCircle,
-  Newspaper,
-  ShoppingCart,
-  Star,
-} from 'lucide-react';
 import { usePathname } from 'next/navigation';
 import { Separator } from '../ui/separator';
+import { NavItem } from '../layouts/AppLayout';
 
-interface NavItem {
-  title: string;
-  href: string;
-  icon: LucideIcon;
-}
-
-const MainNavItems: NavItem[] = [
-  {
-    title: '대시보드',
-    href: '/',
-    icon: Newspaper,
-  },
-  {
-    title: '채팅',
-    href: '/chat',
-    icon: MessageCircle,
-  },
-];
-
-const ProjectNavItems: NavItem[] = [
-  {
-    title: 'SNS 앱',
-    href: '/sns',
-    icon: Bird,
-  },
-];
-
-export const SideNav = () => {
+export const SideNav = ({
+  mainNavItems,
+  projectNavItems,
+}: {
+  mainNavItems: NavItem[];
+  projectNavItems: NavItem[];
+}) => {
   const pathname = usePathname();
   console.log(pathname);
   return (
     <div className="sticky top-24 w-[300px] shrink-0 h-max bg-card py-8 rounded-md border text-card-foreground shadow-lg">
       <nav className="w-full">
-        {MainNavItems.map((link) => {
+        {mainNavItems.map((link) => {
           const isActive = link.href === pathname;
           return (
             <Link
@@ -69,7 +41,7 @@ export const SideNav = () => {
           );
         })}
         <Separator className="my-2" />
-        {ProjectNavItems.map((link) => {
+        {projectNavItems.map((link) => {
           const isActive = link.href === pathname;
           return (
             <Link

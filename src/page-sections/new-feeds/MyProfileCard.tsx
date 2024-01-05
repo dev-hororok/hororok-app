@@ -16,7 +16,7 @@ export const MyProfileCard = () => {
       <CardHeader className="flex items-center">
         <Link href="/profile">
           <Avatar className="h-28 w-28">
-            <AvatarImage src="/avatars/01.png" alt="@shadcn" />
+            <AvatarImage src="/main.webp" alt="@shadcn" />
             <AvatarFallback>SC</AvatarFallback>
           </Avatar>
         </Link>
