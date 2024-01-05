@@ -44,7 +44,7 @@ export const AppLayout = ({ children }: Props) => {
           mainNavItems={mainNavItems}
           projectNavItems={projectNavItems}
         />
-        <div className="px-6 w-full">{children}</div>
+        <div className="px-2 md:px-6 w-full">{children}</div>
       </div>
     </div>
   );
