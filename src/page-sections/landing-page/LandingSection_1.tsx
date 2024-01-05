@@ -10,11 +10,11 @@ import Image from 'next/image';
 
 export const LandingSection_1 = () => {
   return (
-    <div className="flex items-center py-20">
-      <div className="w-1/3 flex flex-col px-4 space-y-4">
+    <div className="flex flex-col lg:flex-row items-center py-20 w-full">
+      <div className="w-full lg:w-1/2 2xl:w-1/3 flex flex-col px-4 space-y-4">
         <p className="text-4xl text-muted-foreground">Hello, We&apos;re</p>
-        <h1 className="text-6xl font-bold text-primary">Team Hororok</h1>
-        <h1 className="text-6xl">web developers</h1>
+        <h1 className="text-5xl font-bold text-primary">Team Hororok</h1>
+        <h1 className="text-5xl">web developers</h1>
 
         <p className="pt-6 pb-6 text-muted-foreground">
           우리는 함께 웹 개발의 모든 영역을 다루는 강력한 팀을 구성합니다.
@@ -31,7 +31,7 @@ export const LandingSection_1 = () => {
           </Button>
         </div>
       </div>
-      <div className="w-5/12 flex justify-center px-4">
+      <div className="hidden lg:flex w-1/2 2xl:w-5/12 justify-center px-4">
         <Image
           width={500}
           height={500}
@@ -40,7 +40,7 @@ export const LandingSection_1 = () => {
           className="rounded-full"
         />
       </div>
-      <div className="w-3/12 px-4 space-y-4">
+      <div className="hidden 2xl:block w-3/12 px-4 space-y-4">
         <NoticeCard />
         <Card>
           <CardHeader className="flex">

@@ -14,9 +14,8 @@ export const SideNav = ({
   projectNavItems: NavItem[];
 }) => {
   const pathname = usePathname();
-  console.log(pathname);
   return (
-    <div className="sticky top-24 w-[300px] shrink-0 h-max bg-card py-8 rounded-md border text-card-foreground shadow-lg">
+    <div className="hidden xl:block sticky top-24 w-[300px] shrink-0 h-max bg-card py-8 rounded-md border text-card-foreground shadow-lg">
       <nav className="w-full">
         {mainNavItems.map((link) => {
           const isActive = link.href === pathname;
