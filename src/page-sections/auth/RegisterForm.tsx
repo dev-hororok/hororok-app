@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Button, buttonVariants } from '@/components/ui/button';
 import { Github, Loader } from 'lucide-react';
 import Link from 'next/link';
+import { registerAction } from '@/actions/auth/register.action';
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -25,7 +26,7 @@ export function RegisterForm({ className, ...props }: UserAuthFormProps) {
 
   return (
     <div className={cn('grid gap-6', className)} {...props}>
-      <form onSubmit={onSubmit}>
+      <form action={registerAction}>
         <div className="grid gap-2">
           <div className="grid gap-1">
             <Label className="sr-only" htmlFor="email">
@@ -35,6 +36,7 @@ export function RegisterForm({ className, ...props }: UserAuthFormProps) {
               id="email"
               placeholder="name@example.com"
               type="email"
+              name="email"
               autoCapitalize="none"
               autoComplete="email"
               autoCorrect="off"
@@ -48,6 +50,7 @@ export function RegisterForm({ className, ...props }: UserAuthFormProps) {
             </Label>
             <Input
               id="password"
+              name="password"
               placeholder="password"
               type="password"
               disabled={isLoading}
