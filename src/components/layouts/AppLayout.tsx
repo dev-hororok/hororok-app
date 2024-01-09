@@ -2,7 +2,13 @@
 import { ReactNode } from 'react';
 import { Header } from '../header/Header';
 import { SideNav } from '../sidenav/SideNav';
-import { Bird, LucideIcon, MessageCircle, Newspaper } from 'lucide-react';
+import {
+  Bird,
+  LucideIcon,
+  MessageCircle,
+  Newspaper,
+  Timer,
+} from 'lucide-react';
 
 export interface NavItem {
   title: string;
@@ -28,6 +34,11 @@ const projectNavItems: NavItem[] = [
     title: 'SNS 앱',
     href: '/sns',
     icon: Bird,
+  },
+  {
+    title: '몬스터 타이머 (App)',
+    href: '/timer',
+    icon: Timer,
   },
 ];
 
