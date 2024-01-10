@@ -1,4 +1,4 @@
-interface User {
+export interface User {
   id: string;
   email: string;
   name: string;
@@ -8,4 +8,10 @@ interface User {
   following_cnt?: number;
 }
 
-export default User;
+export interface SessionUser {
+  id: string;
+  profile_url: string;
+  email: string;
+  role: string;
+  name: string;
+}

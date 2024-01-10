@@ -22,6 +22,7 @@ import { useToast } from '@/components/ui/use-toast';
 import { loginAction } from '@/actions/auth/login.action';
 import { loginFormSchema } from '@/actions/auth/login.validation';
 import { useRouter } from 'next/navigation';
+import { signIn } from 'next-auth/react';
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
@@ -38,18 +39,23 @@ export function LoginForm({ className, ...props }: UserAuthFormProps) {
   const { toast } = useToast();
   const router = useRouter();
 
-  async function onSubmit(values: z.infer<typeof loginFormSchema>) {
+  async function onSubmit(data: z.infer<typeof loginFormSchema>) {
     try {
       setIsLoading(true);
-      const formData = new FormData();
-      Object.entries(values).forEach(([key, value]) => {
-        if (value) {
-          formData.append(key, value);
-        }
+      const result = await signIn('credentials', {
+        email: data.email,
+        password: data.password,
+        redirect: false,
       });
-
-      const result = await loginAction(formData);
-      if (result.success) {
+      if (result?.error) {
+        toast({
+          variant: 'destructive',
+          title: result.error,
+        });
+        form.resetField('password');
+        return;
+      }
+      if (result?.ok) {
         toast({ title: '로그인에 성공했습니다.' });
         router.push('/');
       } else {

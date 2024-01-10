@@ -4,6 +4,7 @@ import { cn } from '@/lib/utils';
 import { ThemeProvider } from '@/providers/ThemeProvider';
 import '@/styles/globals.css';
 import { Toaster } from '@/components/ui/toaster';
+import { SessionProvider } from '@/providers/SessionProvider';
 
 export const fontSans = FontSans({
   subsets: ['latin'],
@@ -29,17 +30,19 @@ export default function RootLayout({
         )}
         suppressHydrationWarning={true}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <>
-            {children}
-            <Toaster />
-          </>
-        </ThemeProvider>
+        <SessionProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <>
+              {children}
+              <Toaster />
+            </>
+          </ThemeProvider>
+        </SessionProvider>
       </body>
     </html>
   );
