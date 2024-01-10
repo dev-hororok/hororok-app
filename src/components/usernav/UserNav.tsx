@@ -11,6 +11,7 @@ import {
   DropdownMenuTrigger,
 } from '../ui/dropdown-menu';
 import { SessionUser } from '@/models/user.model';
+import { signOut } from 'next-auth/react';
 
 interface Props {
   user: SessionUser;
@@ -54,7 +55,10 @@ export function UserNav({ user }: Props) {
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="cursor-pointer text-destructive focus:text-destructive">
+        <DropdownMenuItem
+          onClick={() => signOut()}
+          className="cursor-pointer text-destructive focus:text-destructive"
+        >
           로그아웃
         </DropdownMenuItem>
       </DropdownMenuContent>
