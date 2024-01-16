@@ -18,7 +18,9 @@ export const SideNav = ({
     <div className="hidden xl:block sticky top-24 w-[300px] shrink-0 h-max bg-card py-8 rounded-md border text-card-foreground shadow-lg">
       <nav className="w-full">
         {mainNavItems.map((link) => {
-          const isActive = link.href === pathname;
+          const isActive =
+            pathname === link.href || pathname.startsWith(`${link.href}/`);
+
           return (
             <Link
               key={link.title}
@@ -41,7 +43,8 @@ export const SideNav = ({
         })}
         <Separator className="my-2" />
         {projectNavItems.map((link) => {
-          const isActive = link.href === pathname;
+          const isActive =
+            pathname === link.href || pathname.startsWith(`${link.href}/`);
           return (
             <Link
               key={link.title}
