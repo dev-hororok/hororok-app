@@ -1,11 +1,16 @@
+'use client';
 import { MobileLayout } from '@/components/layouts/MobileLayout';
 import { TimerMainNav } from '@/components/timer-app/TimerMainNav';
+import { Button } from '@/components/ui/button';
 import {
   BriefcaseIcon,
   HomeIcon,
+  Loader,
   MoreHorizontalIcon,
   StoreIcon,
 } from 'lucide-react';
+import Image from 'next/image';
+import { useState } from 'react';
 
 const navItems = [
   {
@@ -35,12 +40,43 @@ export default function TimerLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const [isMontaUser, setIsMontaUser] = useState(false); // 임시
+  // hororok auth정보로 monta 계정 확인
+  // 로그인 클릭 시 hororok 로그인 페이지로 리다이렉팅
+
+  if (!isMontaUser) {
+    return (
+      <MobileLayout>
+        <div className="flex flex-col items-center justify-center h-full gap-2 px-4 bg-primary space-y-20 rounded-md overflow-hidden">
+          <div className="relative flex justify-center">
+            <Image
+              src="/monta_login.png"
+              width={640}
+              height={640}
+              alt="monta-main"
+            />
+            <h3 className="absolute bottom-0 text-3xl font-light">
+              스터디 타이머
+            </h3>
+          </div>
+
+          <Button
+            onClick={() => setIsMontaUser(true)}
+            className="w-full bg-primary-foreground text-primary hover:bg-primary-foreground/90"
+          >
+            유저 생성
+          </Button>
+        </div>
+      </MobileLayout>
+    );
+  }
+
   return (
     <MobileLayout>
-      <main className="relative flex flex-col w-full h-full justify-center">
-        <div className="w-full h-full">{children}</div>
+      <div className="relative flex flex-col w-full h-full justify-center">
+        <main className="w-full h-full">{children}</main>
         <TimerMainNav navItems={navItems} />
-      </main>
+      </div>
     </MobileLayout>
   );
 }
