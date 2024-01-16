@@ -1,4 +1,4 @@
-import User from './user.model';
+import { User } from './user.model';
 
 interface Comment {
   id: string;
