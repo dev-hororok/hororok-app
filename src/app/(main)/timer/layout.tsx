@@ -5,7 +5,6 @@ import { Button } from '@/components/ui/button';
 import {
   BriefcaseIcon,
   HomeIcon,
-  Loader,
   MoreHorizontalIcon,
   StoreIcon,
 } from 'lucide-react';
@@ -55,7 +54,7 @@ export default function TimerLayout({
               height={640}
               alt="monta-main"
             />
-            <h3 className="absolute bottom-0 text-3xl font-light">
+            <h3 className="absolute bottom-0 text-3xl font-light text-primary-foreground">
               스터디 타이머
             </h3>
           </div>

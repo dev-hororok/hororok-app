@@ -16,7 +16,7 @@ export const TimerMainNav = ({ navItems }: Props) => {
   const pathname = usePathname();
   return (
     <nav className="shrink-0">
-      <ul className="flex items-center justify-around w-full bg-background border-t text-xs">
+      <ul className="flex items-center justify-around w-full bg-primary border-t text-xs rounded-b-md">
         {navItems.map((link) => {
           const isActive =
             link.href === '/timer'
@@ -27,12 +27,14 @@ export const TimerMainNav = ({ navItems }: Props) => {
               key={link.text}
               className={cn(
                 'w-full',
-                isActive ? 'text-foreground' : 'text-muted-foreground'
+                isActive
+                  ? 'text-primary-foreground'
+                  : 'text-primary-foreground/50 hover:text-primary-foreground duration-200'
               )}
             >
               <Link
                 href={link.href}
-                className="flex flex-col items-center py-2 gap-1 duration-200 hover:text-foreground"
+                className="flex flex-col items-center py-2 gap-1"
               >
                 {link.icon}
                 <p>{link.text}</p>
