@@ -1,5 +1,6 @@
 'use client';
 import { MobileLayout } from '@/components/layouts/MobileLayout';
+import { TimerMainHead } from '@/components/timer-app/TimerMainHead';
 import { TimerMainNav } from '@/components/timer-app/TimerMainNav';
 import { Button } from '@/components/ui/button';
 import {
@@ -39,7 +40,7 @@ export default function TimerLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const [isMontaUser, setIsMontaUser] = useState(false); // 임시
+  const [isMontaUser, setIsMontaUser] = useState(false);
   // hororok auth정보로 monta 계정 확인
   // 로그인 클릭 시 hororok 로그인 페이지로 리다이렉팅
 
@@ -73,6 +74,7 @@ export default function TimerLayout({
   return (
     <MobileLayout>
       <div className="relative flex flex-col w-full h-full justify-center">
+        <TimerMainHead />
         <main className="w-full h-full">{children}</main>
         <TimerMainNav navItems={navItems} />
       </div>
