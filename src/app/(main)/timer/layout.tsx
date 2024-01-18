@@ -8,6 +8,7 @@ import {
   HomeIcon,
   MoreHorizontalIcon,
   StoreIcon,
+  Timer,
 } from 'lucide-react';
 import Image from 'next/image';
 import { useState } from 'react';
@@ -17,6 +18,11 @@ const navItems = [
     text: '홈',
     icon: <HomeIcon className="w-5 h-5" />,
     href: '/timer',
+  },
+  {
+    text: '타이머',
+    icon: <Timer className="w-5 h-5" />,
+    href: '/timer/study',
   },
   {
     text: '상점',
@@ -75,7 +81,9 @@ export default function TimerLayout({
     <MobileLayout>
       <div className="relative flex flex-col w-full h-full justify-center">
         <TimerMainHead />
-        <main className="w-full h-full">{children}</main>
+        <main className="w-full h-full overflow-y-scroll scrollbar-hide">
+          {children}
+        </main>
         <TimerMainNav navItems={navItems} />
       </div>
     </MobileLayout>
