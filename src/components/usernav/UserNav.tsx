@@ -23,7 +23,11 @@ export function UserNav({ user }: Props) {
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="relative h-8 w-8 rounded-full">
           <Avatar className="h-10 w-10">
-            <AvatarImage src="/main.webp" alt="@shadcn" />
+            {!user.profile_url ? (
+              <AvatarImage src="/main.webp" alt="@shadcn" />
+            ) : (
+              <AvatarImage src={user.profile_url} alt="@shadcn" />
+            )}
             <AvatarFallback>{user.name}</AvatarFallback>
           </Avatar>
         </Button>

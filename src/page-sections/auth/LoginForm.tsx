@@ -39,7 +39,7 @@ export function LoginForm({ className, ...props }: UserAuthFormProps) {
   const { toast } = useToast();
   const router = useRouter();
 
-  async function onSubmit(data: z.infer<typeof loginFormSchema>) {
+  const onSubmit = async (data: z.infer<typeof loginFormSchema>) => {
     try {
       setIsLoading(true);
       const result = await signIn('credentials', {
@@ -66,7 +66,7 @@ export function LoginForm({ className, ...props }: UserAuthFormProps) {
     } finally {
       setIsLoading(false);
     }
-  }
+  };
 
   return (
     <div className={cn('grid gap-6', className)} {...props}>

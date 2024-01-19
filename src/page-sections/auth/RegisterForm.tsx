@@ -8,61 +8,122 @@ import { Input } from '@/components/ui/input';
 import { Button, buttonVariants } from '@/components/ui/button';
 import { Github, Loader } from 'lucide-react';
 import Link from 'next/link';
-import { registerAction } from '@/actions/auth/register.action';
+import { registerServerAction } from '@/actions/auth/register.action';
+import { useForm } from 'react-hook-form';
+import { registerFormSchema } from '@/actions/auth/register.validation';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useToast } from '@/components/ui/use-toast';
+import { useRouter } from 'next/navigation';
+import { z } from 'zod';
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form';
+import { signIn } from 'next-auth/react';
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {}
 
 export function RegisterForm({ className, ...props }: UserAuthFormProps) {
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
+  const form = useForm<z.infer<typeof registerFormSchema>>({
+    resolver: zodResolver(registerFormSchema),
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+  });
 
-  async function onSubmit(event: React.SyntheticEvent) {
-    event.preventDefault();
-    setIsLoading(true);
+  const { toast } = useToast();
+  const router = useRouter();
 
-    setTimeout(() => {
+  const onSubmit = async (data: z.infer<typeof registerFormSchema>) => {
+    const formData = new FormData();
+
+    Object.entries(data).forEach(([key, value]) => {
+      formData.append(key, value);
+    });
+
+    try {
+      setIsLoading(true);
+      const registerResult = await registerServerAction(formData);
+      if (!registerResult.success && registerResult.message) {
+        toast({
+          variant: 'destructive',
+          title: registerResult.message,
+        });
+        form.resetField('password');
+        return;
+      }
+
+      if (!registerResult.success) {
+        throw new Error();
+      }
+
+      const loginResult = await signIn('credentials', {
+        email: data.email,
+        password: data.password,
+        redirect: false,
+      });
+
+      // 로그인까지 성공 시 홈으로
+      if (loginResult?.ok) {
+        toast({ title: '회원가입에 성공했습니다.' });
+        router.push('/');
+      } else {
+        toast({ title: '회원가입에 성공했습니다.' });
+        router.push('/auth/login');
+      }
+    } catch (error) {
+      toast({ title: '서버에 문제가 발생했습니다.', variant: 'destructive' });
+    } finally {
       setIsLoading(false);
-    }, 3000);
-  }
+    }
+  };
 
   return (
     <div className={cn('grid gap-6', className)} {...props}>
-      <form action={registerAction}>
-        <div className="grid gap-2">
-          <div className="grid gap-1">
-            <Label className="sr-only" htmlFor="email">
-              Email
-            </Label>
-            <Input
-              id="email"
-              placeholder="name@example.com"
-              type="email"
-              name="email"
-              autoCapitalize="none"
-              autoComplete="email"
-              autoCorrect="off"
-              disabled={isLoading}
-            />
-          </div>
-
-          <div className="grid gap-1">
-            <Label className="sr-only" htmlFor="password">
-              Password
-            </Label>
-            <Input
-              id="password"
-              name="password"
-              placeholder="password"
-              type="password"
-              disabled={isLoading}
-            />
-          </div>
-
-          <Button disabled={isLoading}>
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Email</FormLabel>
+                <FormControl>
+                  <Input placeholder="hororok@google.com" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Password</FormLabel>
+                <FormControl>
+                  <Input
+                    type="password"
+                    placeholder="your password"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <Button disabled={isLoading} className="w-full">
             {isLoading && <Loader className="mr-2 h-4 w-4 animate-spin" />}
-            Sign In with Email
+            Sign Up with Email
           </Button>
-        </div>
-      </form>
+        </form>
+      </Form>
 
       <div className="flex justify-center items-center text-sm">
         <span className="text-muted-foreground">이미 계정이 있나요?</span>
