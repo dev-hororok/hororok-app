@@ -1,8 +1,26 @@
-import { Button } from '@/components/ui/button';
-import { Plus } from 'lucide-react';
+import { EggAddCard } from '@/components/timer-app/EggAddCard';
+import { EggCard } from '@/components/timer-app/EggCard';
 import Image from 'next/image';
 
-export default function Timer() {
+const eggs = [
+  {
+    eggId: 1,
+    imgSrc: '/egg_1.png',
+    restSeconds: 3411,
+  },
+  {
+    eggId: 1,
+    imgSrc: '/egg_1.png',
+    restSeconds: 3411,
+  },
+  {
+    eggId: 1,
+    imgSrc: '/egg_1.png',
+    restSeconds: 3411,
+  },
+];
+
+export default function Home() {
   return (
     <div className="w-full h-full py-4 overflow-y-scroll scrollbar-hide">
       <p className="text-sm text-center text-muted-foreground">
@@ -15,33 +33,16 @@ export default function Timer() {
         보유중인 알 (최대 4개)
       </p>
       <div className="grid grid-cols-4 px-4">
-        <Button
-          variant={'ghost'}
-          className="h-auto p-1 flex flex-col items-center justify-center text-xs font-semibold"
-        >
-          <Image width={200} height={200} src="/egg_1.png" alt="orange" />
-          <p>00:00:00</p>
-        </Button>
-        <Button
-          variant={'ghost'}
-          className="h-auto p-1 flex flex-col items-center justify-center text-xs font-semibold"
-        >
-          <Image width={200} height={200} src="/egg_1.png" alt="orange" />
-          <p>04:43:22</p>
-        </Button>
-        <Button
-          variant={'ghost'}
-          className="h-auto p-1 flex flex-col items-center justify-center text-xs font-semibold"
-        >
-          <Image width={200} height={200} src="/egg_1.png" alt="orange" />
-          <p>02:41:08</p>
-        </Button>
-        <Button
-          variant={'ghost'}
-          className="h-auto p-1 flex flex-col items-center justify-center text-xs font-semibold"
-        >
-          <Plus />
-        </Button>
+        {eggs.map((egg, idx) => {
+          return (
+            <EggCard
+              key={idx}
+              imgSrc={egg.imgSrc}
+              restSeconds={egg.restSeconds}
+            />
+          );
+        })}
+        {eggs.length < 4 ? <EggAddCard /> : null}
       </div>
     </div>
   );

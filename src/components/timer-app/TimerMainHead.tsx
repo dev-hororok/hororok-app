@@ -1,10 +1,4 @@
-import {
-  Badge,
-  CircleDollarSign,
-  CircleDollarSignIcon,
-  CoinsIcon,
-  SettingsIcon,
-} from 'lucide-react';
+import { CitrusIcon, SettingsIcon } from 'lucide-react';
 import { Button } from '../ui/button';
 
 export const TimerMainHead = () => {
@@ -15,9 +9,9 @@ export const TimerMainHead = () => {
         <Button
           type="button"
           variant={'outline'}
-          className="text-sm gap-2 px-2"
+          className="text-sm gap-1 px-2"
         >
-          <CircleDollarSignIcon className="w-4 h-4" />
+          <CitrusIcon className="w-4 h-4" />
           100
         </Button>
         <Button type="button" variant={'ghost'} className="w-10 h-10 p-0">
