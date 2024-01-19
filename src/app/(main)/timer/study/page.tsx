@@ -12,7 +12,7 @@ import { PlayIcon } from 'lucide-react';
 
 export default function StudyTimer() {
   return (
-    <div className="w-full h-full py-4 overflow-y-scroll scrollbar-hide">
+    <div className="w-full h-full py-4">
       <Tabs defaultValue="pomodoro" className="w-full px-8">
         <TabsList className="grid w-full grid-cols-2">
           <TabsTrigger value="pomodoro">뽀모도로</TabsTrigger>

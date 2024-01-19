@@ -18,7 +18,7 @@ export interface InventoryCharacter {
 
 export default function Inventory() {
   return (
-    <div className="w-full h-full py-4 overflow-y-scroll scrollbar-hide px-4 space-y-6">
+    <div className="w-full h-full py-4 px-4 space-y-6">
       <div>
         <p className="font-semibold pb-4">사용 아이템</p>
         <div className="grid grid-cols-3 gap-2">
