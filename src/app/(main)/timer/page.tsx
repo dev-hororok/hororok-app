@@ -12,7 +12,12 @@ export default function Home() {
 
       {/* Character Section */}
       <div className="w-4/5 mx-auto">
-        <Image width={500} height={500} src="/orange.png" alt="orange" />
+        <Image
+          width={500}
+          height={500}
+          src="/character/monster_2.png"
+          alt="orange"
+        />
       </div>
 
       {/* Egg Section */}

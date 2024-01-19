@@ -1,5 +1,5 @@
 import authOption from '@/lib/authOption';
-import { EditAccountForm } from '@/page-sections/account/EditAccountForm';
+import { ChangePasswordForm } from '@/page-sections/account/ChangePasswordForm';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 
@@ -10,7 +10,7 @@ export default async function ChangePasswordPage() {
   }
   return (
     <div>
-      <EditAccountForm user={session.user} />
+      <ChangePasswordForm user={session.user} />
     </div>
   );
 }
