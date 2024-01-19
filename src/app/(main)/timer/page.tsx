@@ -1,24 +1,7 @@
 import { EggAddCard } from '@/components/timer-app/EggAddCard';
 import { EggCard } from '@/components/timer-app/EggCard';
+import { dummyUserEggs } from '@/data/monta/inventoryData';
 import Image from 'next/image';
-
-const eggs = [
-  {
-    eggId: 1,
-    imgSrc: '/egg_1.png',
-    restSeconds: 3411,
-  },
-  {
-    eggId: 1,
-    imgSrc: '/egg_1.png',
-    restSeconds: 3411,
-  },
-  {
-    eggId: 1,
-    imgSrc: '/egg_1.png',
-    restSeconds: 3411,
-  },
-];
 
 export default function Home() {
   return (
@@ -32,8 +15,8 @@ export default function Home() {
       <p className="text-center text-sm font-bold pb-4">
         보유중인 알 (최대 4개)
       </p>
-      <div className="grid grid-cols-4 px-4">
-        {eggs.map((egg, idx) => {
+      <div className="grid grid-cols-4 px-4 gap-1">
+        {dummyUserEggs.map((egg, idx) => {
           return (
             <EggCard
               key={idx}
@@ -42,7 +25,7 @@ export default function Home() {
             />
           );
         })}
-        {eggs.length < 4 ? <EggAddCard /> : null}
+        {dummyUserEggs.length < 4 ? <EggAddCard /> : null}
       </div>
     </div>
   );
