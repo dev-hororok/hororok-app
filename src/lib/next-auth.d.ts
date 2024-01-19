@@ -7,6 +7,7 @@ declare module 'next-auth' {
     user: SessionUser;
     access_token: string;
     refresh_token: string;
+    expiresIn: number;
   }
 }
 
@@ -15,5 +16,6 @@ declare module 'next-auth/jwt' {
     user: SessionUser;
     access_token: string;
     refresh_token: string;
+    expiresIn: number;
   }
 }
