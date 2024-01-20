@@ -11,13 +11,8 @@ export default function Home() {
       </p>
 
       {/* Character Section */}
-      <div className="w-4/5 mx-auto">
-        <Image
-          width={500}
-          height={500}
-          src="/character/monster_2.png"
-          alt="orange"
-        />
+      <div className="w-full mx-auto">
+        <Image width={500} height={500} src="/main_6.png" alt="orange" />
       </div>
 
       {/* Egg Section */}

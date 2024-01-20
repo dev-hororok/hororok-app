@@ -20,7 +20,7 @@ export const EggCard = ({ imgSrc, alt = 'egg_card', restSeconds }: Props) => {
       )}
     >
       {isActive ? <p>Open</p> : null}
-      <Image width={200} height={200} src={imgSrc} alt={alt} />
+      <Image width={200} height={200} src={imgSrc} alt={alt} className="p-0" />
       <p>{formatTime(restSeconds)}</p>
     </Button>
   );

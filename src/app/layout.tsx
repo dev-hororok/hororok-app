@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter as FontSans } from 'next/font/google';
+import { Gaegu as FontSans } from 'next/font/google';
 import { cn } from '@/lib/utils';
 import { ThemeProvider } from '@/providers/ThemeProvider';
 import '@/styles/globals.css';
@@ -8,6 +8,7 @@ import { SessionProvider } from '@/providers/SessionProvider';
 
 export const fontSans = FontSans({
   subsets: ['latin'],
+  weight: '400',
   variable: '--font-sans',
 });
 

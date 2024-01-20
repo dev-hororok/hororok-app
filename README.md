@@ -1,4 +1,4 @@
-## Hororok SNS App
+## Hororok Server
 
 #### .env
 
