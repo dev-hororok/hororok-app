@@ -1,13 +1,13 @@
+import { fetchMe } from '@/actions/account/fetch-me';
 import { Separator } from '@/components/ui/separator';
-import authOption from '@/lib/authOption';
 import { EditAccountForm } from '@/page-sections/account/EditAccountForm';
-import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 
 export default async function EditAccountPage() {
-  const session = await getServerSession(authOption);
-  if (!session) {
-    redirect('/');
+  const account = await fetchMe();
+
+  if (!account) {
+    redirect('/auth/login');
   }
 
   return (
@@ -16,7 +16,7 @@ export default async function EditAccountPage() {
         <h3 className="text-lg font-medium">Account</h3>
       </div>
       <Separator />
-      <EditAccountForm user={session.user} />
+      <EditAccountForm account={account} />
     </div>
   );
 }

@@ -17,7 +17,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
-import { SessionUser } from '@/models/user.model';
+import { IAccount } from '@/models/account.model';
 
 const accountFormSchema = z.object({
   name: z
@@ -33,15 +33,15 @@ const accountFormSchema = z.object({
 type AccountFormValues = z.infer<typeof accountFormSchema>;
 
 interface Props {
-  user: SessionUser;
+  account: IAccount;
 }
 
-export const EditAccountForm = ({ user }: Props) => {
+export const EditAccountForm = ({ account }: Props) => {
   const { toast } = useToast();
   const form = useForm<AccountFormValues>({
     resolver: zodResolver(accountFormSchema),
     defaultValues: {
-      name: user.name,
+      name: account.name,
     },
   });
 
@@ -64,7 +64,12 @@ export const EditAccountForm = ({ user }: Props) => {
         </div>
         <div className="space-y-2">
           <Label>Email</Label>
-          <Input type="email" value={user.email} disabled placeholder="Email" />
+          <Input
+            type="email"
+            value={account.email}
+            disabled
+            placeholder="Email"
+          />
         </div>
         <FormField
           control={form.control}

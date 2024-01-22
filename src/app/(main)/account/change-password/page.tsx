@@ -1,16 +1,13 @@
-import authOption from '@/lib/authOption';
+import { fetchMe } from '@/actions/account/fetch-me';
 import { ChangePasswordForm } from '@/page-sections/account/ChangePasswordForm';
-import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 
 export default async function ChangePasswordPage() {
-  const session = await getServerSession(authOption);
-  if (!session) {
-    redirect('/');
+  const account = await fetchMe();
+
+  if (!account) {
+    redirect('/auth/login');
   }
-  return (
-    <div>
-      <ChangePasswordForm user={session.user} />
-    </div>
-  );
+
+  return <div>{<ChangePasswordForm account={account} />}</div>;
 }

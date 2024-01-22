@@ -16,7 +16,7 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { SessionUser } from '@/models/user.model';
+import { IAccount } from '@/models/account.model';
 
 const changePasswordFormSchema = z.object({
   password: z
@@ -32,10 +32,10 @@ const changePasswordFormSchema = z.object({
 type ChangePasswordFormValues = z.infer<typeof changePasswordFormSchema>;
 
 interface Props {
-  user: SessionUser;
+  account: IAccount;
 }
 
-export const ChangePasswordForm = ({ user }: Props) => {
+export const ChangePasswordForm = ({ account }: Props) => {
   const { toast } = useToast();
   const form = useForm<ChangePasswordFormValues>({
     resolver: zodResolver(changePasswordFormSchema),
