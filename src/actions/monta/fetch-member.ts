@@ -13,8 +13,7 @@ export const fetchMontaSessionMember = async () => {
         Authorization: `Bearer ${session.access_token}`,
       },
     });
-    const data: { success: boolean; data: { member: IMontaMember } } =
-      await response.json();
+    const data: { data: { member: IMontaMember } } = await response.json();
 
     return data.data.member;
   } catch (e) {

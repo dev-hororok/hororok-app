@@ -1,6 +1,4 @@
-import { EggAddCard } from '@/components/timer-app/EggAddCard';
-import { EggCard } from '@/components/timer-app/EggCard';
-import { dummyUserEggs } from '@/data/monta/inventoryData';
+import { EggInventorySection } from '@/page-sections/monta/EggInventorySection';
 import Image from 'next/image';
 
 export default function Home() {
@@ -21,23 +19,7 @@ export default function Home() {
       </div>
 
       {/* Egg Section */}
-      <div className="px-4">
-        <p className="text-center text-sm font-bold pb-4">
-          보유중인 주머니 (최대 4개)
-        </p>
-        <div className="grid grid-cols-4 gap-1">
-          {dummyUserEggs.map((egg, idx) => {
-            return (
-              <EggCard
-                key={idx}
-                imgSrc={egg.imgSrc}
-                restSeconds={egg.restSeconds}
-              />
-            );
-          })}
-          {dummyUserEggs.length < 4 ? <EggAddCard /> : null}
-        </div>
-      </div>
+      <EggInventorySection />
       {/* Streak Section */}
       <div className="flex flex-col justify-center px-4 pt-4">
         <p className="text-center text-sm font-bold pb-4">스트릭 (임시)</p>

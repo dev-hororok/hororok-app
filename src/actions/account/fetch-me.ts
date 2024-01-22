@@ -16,7 +16,7 @@ export const fetchMe = async () => {
         Authorization: `Bearer ${session.access_token}`,
       },
     });
-    const data: { success: boolean; data: IAccount } = await response.json();
+    const data: { data: IAccount } = await response.json();
     return data.data;
   } catch (e) {
     console.log('Error fetching data', e);
