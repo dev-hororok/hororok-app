@@ -12,7 +12,12 @@ export default function Home() {
 
       {/* Character Section */}
       <div className="w-full mx-auto">
-        <Image width={500} height={500} src="/main_6.png" alt="orange" />
+        <Image
+          width={500}
+          height={500}
+          src="/bottles/bottle_1.png"
+          alt="orange"
+        />
       </div>
 
       {/* Egg Section */}

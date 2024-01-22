@@ -6,22 +6,22 @@ import {
 export const dummyUserEggs = [
   {
     eggId: 1,
-    imgSrc: '/bag_5.png',
+    imgSrc: '/pockets/pocket_1.png',
     restSeconds: 0,
   },
   {
     eggId: 2,
-    imgSrc: '/bag_4.png',
+    imgSrc: '/pockets/pocket_2.png',
     restSeconds: 2843,
   },
   {
     eggId: 3,
-    imgSrc: '/bag_2.png',
+    imgSrc: '/pockets/pocket_3.png',
     restSeconds: 8684,
   },
   {
     eggId: 4,
-    imgSrc: '/bag_3.png',
+    imgSrc: '/pockets/pocket_4.png',
     restSeconds: 8684,
   },
 ];

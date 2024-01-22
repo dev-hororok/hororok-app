@@ -27,7 +27,7 @@ export const ProductCard = ({
       className="h-auto p-2 flex flex-col items-center justify-center text-xs shadow-sm"
     >
       {grade ? <Badge variant={'secondary'}>{grade} 등급</Badge> : null}
-      <Image src={imgSrc} alt={alt} width={200} height={200} className="p-8" />
+      <Image src={imgSrc} alt={alt} width={100} height={100} className="p-2" />
       <div className="w-full flex flex-col items-center justify-between gap-1.5">
         <p className="w-full font-semibold truncate">{name}</p>
         <p className="flex items-center gap-1">
