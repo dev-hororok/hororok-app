@@ -50,7 +50,7 @@ export function RegisterForm({ className, ...props }: UserAuthFormProps) {
     try {
       setIsLoading(true);
       const registerResult = await registerServerAction(formData);
-      if (!registerResult.success && registerResult.message) {
+      if (registerResult.message) {
         toast({
           variant: 'destructive',
           title: registerResult.message,
@@ -59,9 +59,9 @@ export function RegisterForm({ className, ...props }: UserAuthFormProps) {
         return;
       }
 
-      if (!registerResult.success) {
-        throw new Error();
-      }
+      // if (!registerResult.success) {
+      //   throw new Error();
+      // }
 
       const loginResult = await signIn('credentials', {
         email: data.email,

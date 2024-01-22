@@ -14,12 +14,11 @@ export const createMontaMember = async () => {
         Authorization: `Bearer ${session.access_token}`,
       },
     });
-    const data: { success: boolean; data: { member: IMontaMember } } =
-      await response.json();
+    const data: { data: { member: IMontaMember } } = await response.json();
 
-    if (!data.success) {
-      throw new Error('서버에 문제가 발생했습니다.');
-    }
+    // if (!data.success) {
+    //   throw new Error('서버에 문제가 발생했습니다.');
+    // }
 
     return data.data.member;
   } catch (e) {

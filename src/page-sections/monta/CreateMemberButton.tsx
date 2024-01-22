@@ -2,22 +2,33 @@
 import { createMontaMember } from '@/actions/monta/create-member';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
+import { useMontaStore } from '@/store/useMontaStore';
 import { Loader } from 'lucide-react';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 export const CreateMemberButton = () => {
+  const { data: session } = useSession();
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
+  const router = useRouter();
+
   const onSubmit = async (e: any) => {
     e.preventDefault();
     try {
+      if (!session) {
+        router.push('/auth/login');
+        return;
+      }
       setIsLoading(true);
 
       const result = await createMontaMember();
-      console.log(result);
       if (result) {
         toast({ title: '환영합니다.' });
-        // 유저 등록 (zustand)
+        useMontaStore.setState({
+          member: result,
+        });
       } else {
         throw new Error();
       }
