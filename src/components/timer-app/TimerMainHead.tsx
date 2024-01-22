@@ -4,7 +4,6 @@ import { Button } from '../ui/button';
 export const TimerMainHead = () => {
   return (
     <div className="flex flex-col items-center gap-2 shrink-0 pt-4">
-      <div className="text-sm font-semibold">Home</div>
       <div className="flex items-center justify-between w-full px-4">
         <Button
           type="button"
