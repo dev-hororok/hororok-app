@@ -3,26 +3,42 @@ import {
   InventoryUseItem,
 } from '@/app/(main)/timer/inventory/page';
 
-export const dummyUserEggs = [
+export const dummyEggInventory = [
   {
-    eggId: 1,
-    imgSrc: '/pockets/pocket_1.png',
-    restSeconds: 0,
+    egg_inventory_id: '1234',
+    progress: 0,
+    egg: {
+      egg_id: 'String',
+      name: 'String',
+      description: 'String',
+      required_study_time: 303,
+      image_url: '/pockets/pocket_1.png',
+      grade: 'String',
+    },
   },
   {
-    eggId: 2,
-    imgSrc: '/pockets/pocket_2.png',
-    restSeconds: 2843,
+    egg_inventory_id: '1234',
+    progress: 33,
+    egg: {
+      egg_id: 'String',
+      name: 'String',
+      description: 'String',
+      required_study_time: 33,
+      image_url: '/pockets/pocket_2.png',
+      grade: 'String',
+    },
   },
   {
-    eggId: 3,
-    imgSrc: '/pockets/pocket_3.png',
-    restSeconds: 8684,
-  },
-  {
-    eggId: 4,
-    imgSrc: '/pockets/pocket_4.png',
-    restSeconds: 8684,
+    egg_inventory_id: '2135',
+    progress: 5552,
+    egg: {
+      egg_id: 'String',
+      name: 'String',
+      description: 'String',
+      required_study_time: 6124,
+      image_url: '/pockets/pocket_3.png',
+      grade: 'String',
+    },
   },
 ];
 

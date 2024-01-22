@@ -20,14 +20,6 @@ export default function Home() {
 
       {/* Egg Section */}
       <EggInventorySection />
-      {/* Streak Section */}
-      <div className="flex flex-col justify-center px-4 pt-4">
-        <p className="text-center text-sm font-bold pb-4">스트릭 (임시)</p>
-        <img
-          src="http://mazandi.herokuapp.com/api?handle=lcwoo3145&theme=warm"
-          alt="zandi"
-        />
-      </div>
     </div>
   );
 }
