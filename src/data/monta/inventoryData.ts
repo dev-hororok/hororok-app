@@ -2,15 +2,17 @@ import {
   InventoryCharacter,
   InventoryUseItem,
 } from '@/app/(main)/timer/inventory/page';
+import { IEggInventory } from '@/models/monta/egg.model';
 
-export const dummyEggInventory = [
+export const dummyEggInventory: IEggInventory[] = [
   {
     egg_inventory_id: '1234',
     progress: 0,
     egg: {
       egg_id: 'String',
       name: 'String',
-      description: 'String',
+      description: '',
+      purchase_price: 200,
       required_study_time: 303,
       image_url: '/pockets/pocket_1.png',
       grade: 'String',
@@ -22,7 +24,8 @@ export const dummyEggInventory = [
     egg: {
       egg_id: 'String',
       name: 'String',
-      description: 'String',
+      description: '',
+      purchase_price: 200,
       required_study_time: 33,
       image_url: '/pockets/pocket_2.png',
       grade: 'String',
@@ -34,7 +37,8 @@ export const dummyEggInventory = [
     egg: {
       egg_id: 'String',
       name: 'String',
-      description: 'String',
+      description: '',
+      purchase_price: 200,
       required_study_time: 6124,
       image_url: '/pockets/pocket_3.png',
       grade: 'String',

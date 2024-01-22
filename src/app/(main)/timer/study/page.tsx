@@ -1,3 +1,4 @@
+'use client';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import {
@@ -8,6 +9,7 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { useMontaStore } from '@/store/useMontaStore';
 import { PlayIcon } from 'lucide-react';
 
 export default function StudyTimer() {
