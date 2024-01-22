@@ -1,9 +1,7 @@
+import { fetchShopEggs } from '@/actions/monta/fetch-shop-eggs';
 import { ProductCard } from '@/components/timer-app/ProductCard';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import {
-  dummyEggItemProducts,
-  dummyUseItemProducts,
-} from '@/data/monta/productData';
+import { dummyUseItemProducts } from '@/data/monta/productData';
 
 export interface Product {
   imgSrc: string;
@@ -14,7 +12,8 @@ export interface Product {
   grade?: string;
 }
 
-export default function Shop() {
+export default async function Shop() {
+  const shopEggs = await fetchShopEggs();
   return (
     <Tabs defaultValue="eggs" className="w-full px-4 py-2 relative">
       <div className="sticky top-0 bg-background py-2">
@@ -27,13 +26,13 @@ export default function Shop() {
         <div className="w-full h-full py-4 overflow-y-scroll scrollbar-hide space-y-6">
           <div>
             <div className="grid grid-cols-2 gap-2">
-              {dummyEggItemProducts.map((item, idx) => {
+              {shopEggs.map((item, idx) => {
                 return (
                   <ProductCard
                     key={idx}
-                    imgSrc={item.imgSrc}
-                    alt={item.alt}
-                    price={item.price}
+                    imgSrc={item.image_url}
+                    alt={item.egg_id}
+                    price={item.purchase_price}
                     name={item.name}
                     description={item.description}
                     grade={item.grade}
