@@ -1,8 +1,8 @@
-'use client';
+import { fetchMontaSessionMember } from '@/actions/monta/fetch-member';
 import { MobileLayout } from '@/components/layouts/MobileLayout';
 import { TimerMainHead } from '@/components/timer-app/TimerMainHead';
 import { TimerMainNav } from '@/components/timer-app/TimerMainNav';
-import { Button } from '@/components/ui/button';
+import { CreateMemberButton } from '@/page-sections/monta/CreateMemberButton';
 import {
   BriefcaseIcon,
   HomeIcon,
@@ -11,7 +11,6 @@ import {
   Timer,
 } from 'lucide-react';
 import Image from 'next/image';
-import { useState } from 'react';
 
 const navItems = [
   {
@@ -41,16 +40,14 @@ const navItems = [
   },
 ];
 
-export default function TimerLayout({
+export default async function TimerLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [isMontaUser, setIsMontaUser] = useState(false);
-  // hororok auth정보로 monta 계정 확인
-  // 로그인 클릭 시 hororok 로그인 페이지로 리다이렉팅
+  const member = await fetchMontaSessionMember();
 
-  if (!isMontaUser) {
+  if (!member) {
     return (
       <MobileLayout>
         <div className="flex flex-col items-center justify-center h-full gap-2 px-4 bg-primary space-y-20 rounded-md overflow-hidden">
@@ -66,12 +63,7 @@ export default function TimerLayout({
             </h3>
           </div>
 
-          <Button
-            onClick={() => setIsMontaUser(true)}
-            className="w-full bg-primary-foreground text-primary hover:bg-primary-foreground/90"
-          >
-            유저 생성
-          </Button>
+          <CreateMemberButton />
         </div>
       </MobileLayout>
     );

@@ -1,14 +1,11 @@
 'use server';
-import { IAccount } from './../../models/account.model';
 import authOption from '@/lib/authOption';
 import { getApiUrl } from '@/lib/getApiUrl';
 import { getServerSession } from 'next-auth';
 
-export const fetchMe = async () => {
+export const fetchMontaSessionMember = async () => {
   const session = await getServerSession(authOption);
-  // const apiUrl = getApiUrl('accounts/me'); // 원래
-  const apiUrl = getApiUrl('auth/me', 'monta_nest');
-
+  const apiUrl = getApiUrl('me', 'monta_nest');
   if (!session) return null;
   try {
     const response = await fetch(apiUrl, {
@@ -16,8 +13,10 @@ export const fetchMe = async () => {
         Authorization: `Bearer ${session.access_token}`,
       },
     });
-    const data: { success: boolean; data: IAccount } = await response.json();
-    return data.data;
+    const data: { success: boolean; data: { member: IMontaMember } } =
+      await response.json();
+
+    return data.data.member;
   } catch (e) {
     console.log('Error fetching data', e);
     return null;

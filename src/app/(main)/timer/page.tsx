@@ -23,7 +23,7 @@ export default function Home() {
       {/* Egg Section */}
       <div className="px-4">
         <p className="text-center text-sm font-bold pb-4">
-          보유중인 알 (최대 4개)
+          보유중인 주머니 (최대 4개)
         </p>
         <div className="grid grid-cols-4 gap-1">
           {dummyUserEggs.map((egg, idx) => {

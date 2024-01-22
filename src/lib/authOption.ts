@@ -1,7 +1,7 @@
 import { NextAuthOptions } from 'next-auth';
 import { JWT } from 'next-auth/jwt';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import { Base_Backend_URL } from './constant';
+import { Base_Backend_URL, Monta_Nest_Backend_URL } from './constant';
 
 const refreshToken = async (token: JWT): Promise<JWT> => {
   const res = await fetch(Base_Backend_URL + '/auth/refresh', {
@@ -38,17 +38,14 @@ const authOption: NextAuthOptions = {
       async authorize(credentials, req) {
         if (!credentials?.email || !credentials.password) return null;
         const { email, password } = credentials;
-        const res = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/auth/login`,
-          {
-            method: 'POST',
-            body: JSON.stringify({
-              email,
-              password,
-            }),
-            headers: { 'Content-Type': 'application/json' },
-          }
-        );
+        const res = await fetch(`${Monta_Nest_Backend_URL}/auth/login`, {
+          method: 'POST',
+          body: JSON.stringify({
+            email,
+            password,
+          }),
+          headers: { 'Content-Type': 'application/json' },
+        });
         const user = await res.json();
         if (res.ok && user) {
           return user.data;
